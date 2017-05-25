@@ -1,0 +1,17 @@
+body {
+  color: hsl(170, 30%, 10%);
+
+  background-color: hsl(170, 30%, 30%);
+}
+
+h1 {
+  margin: 0;
+
+  font-size: 26vh;
+  text-align: justify;
+  white-space: nowrap;
+}
+
+span {
+  font-style: italic;
+}
