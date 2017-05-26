@@ -5,7 +5,9 @@
   "main": "lib/parser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify --entry src/writer.js --outfile, lib/writer.js"
+    "build": "browserify --entry src/writer.js --outfile lib/writer.js",
+    "browserify": "browserify",
+    "dev": "watch make -j 2"
   },
   "keywords": [],
   "author": "",
