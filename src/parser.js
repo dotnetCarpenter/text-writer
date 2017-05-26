@@ -2,6 +2,8 @@
 
 exports.parser = parser
 
+/** TESTS **/
+
 // TODO: create function that get the selected element + its childNodes
 let tokens1 = document.getElementById("test1").childNodes
 let tree1 = parser( tokens1 )
@@ -41,12 +43,10 @@ function map(f, iterable) {
 function textFactory(node) {
   return {
     // node,
-    innerHTML: node.innerHTML,
-    outerHTML: node.outerHTML,
-    innerText: node.innerText,
+    textContent: node.textContent.trim(),
+    raw: node.textContent,
     nodeName: node.nodeName,
     nodeType: node.nodeType,
-    textContent: node.textContent.trim(),
     childNodes: node.childNodes,
     // nextSibling: null,
     // previousSibling: null,
@@ -56,21 +56,32 @@ function textFactory(node) {
 }
 
 function writeText() {}
-function removeText() {}
+function removeText(el, speed, cb) {
+  let n = el.textContent.length
+  let timer = setInterval(() => {
+    el.textContent = el.textContent.slice(0, -1)
+    n--
+    if(n === 0) {
+      clearInterval(timer)
+      el.dataset.writing = 0
+      cb && cb()
+    }
+  }, speed)
+}
 
 function treeBuilder(tree, text) {
-  switch(text.nodeType) {
-    case Node.ELEMENT_NODE:
+  // switch(text.nodeType) {
+  //   case Node.ELEMENT_NODE:
       tree.push(text)
       // text.previousSibling = last(tree)
       if(text.childNodes.length)
         text.childNodes = map(textFactory, text.childNodes)
                             .reduce(treeBuilder, [])
-      break
-    case Node.TEXT_NODE: // TODO: don't ignore empty nodes anyway, they're important for <pre> etc. and I can simplify or remove treeBuilder
-      // text.textContent.trim() === '' || tree.push(text)
-      break
-  }
+  //     break
+  //   case Node.TEXT_NODE: // TODO: don't ignore empty nodes anyway, they're important for <pre> etc. and I can simplify or remove treeBuilder
+  //     // text.textContent.trim() === '' || tree.push(text)
+  //     break
+  // }
   return tree
 }
 

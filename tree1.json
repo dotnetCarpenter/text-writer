@@ -1,33 +1,67 @@
 [{
+  "textContent": "",
+  "raw": "\n\n    ",
+  "nodeName": "#text",
+  "nodeType": 3,
+  "childNodes": {}
+}, {
   "innerHTML": "test AF<br><span>simple</span><br>parser",
   "outerHTML": "<h1>test AF<br><span>simple</span><br>parser</h1>",
   "innerText": "test AF\nsimple\nparser",
+  "textContent": "test AFsimpleparser",
+  "raw": "test AFsimpleparser",
   "nodeName": "H1",
   "nodeType": 1,
-  "textContent": "test AFsimpleparser",
   "childNodes": [{
+    "textContent": "test AF",
+    "raw": "test AF",
+    "nodeName": "#text",
+    "nodeType": 3,
+    "childNodes": {}
+  }, {
     "innerHTML": "",
     "outerHTML": "<br>",
     "innerText": "",
+    "textContent": "",
+    "raw": "",
     "nodeName": "BR",
     "nodeType": 1,
-    "textContent": "",
     "childNodes": {}
   }, {
     "innerHTML": "simple",
     "outerHTML": "<span>simple</span>",
     "innerText": "simple",
+    "textContent": "simple",
+    "raw": "simple",
     "nodeName": "SPAN",
     "nodeType": 1,
-    "textContent": "simple",
-    "childNodes": []
+    "childNodes": [{
+      "textContent": "simple",
+      "raw": "simple",
+      "nodeName": "#text",
+      "nodeType": 3,
+      "childNodes": {}
+    }]
   }, {
     "innerHTML": "",
     "outerHTML": "<br>",
     "innerText": "",
+    "textContent": "",
+    "raw": "",
     "nodeName": "BR",
     "nodeType": 1,
-    "textContent": "",
+    "childNodes": {}
+  }, {
+    "textContent": "parser",
+    "raw": "parser",
+    "nodeName": "#text",
+    "nodeType": 3,
     "childNodes": {}
   }]
+}, {
+  "textContent": "",
+  "raw": "\n\n  ",
+  "nodeName": "#text",
+  "nodeType": 3,
+  "childNodes": {}
 }]

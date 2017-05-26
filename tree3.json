@@ -1,49 +1,183 @@
 [{
+  "textContent": "",
+  "raw": "\n\n    ",
+  "nodeName": "#text",
+  "nodeType": 3,
+  "childNodes": {}
+}, {
   "innerHTML": "Lorem ipsum",
   "outerHTML": "<p>Lorem ipsum</p>",
   "innerText": "Lorem ipsum",
+  "textContent": "Lorem ipsum",
+  "raw": "Lorem ipsum",
   "nodeName": "P",
   "nodeType": 1,
-  "textContent": "Lorem ipsum",
-  "childNodes": []
+  "childNodes": [{
+    "textContent": "Lorem ipsum",
+    "raw": "Lorem ipsum",
+    "nodeName": "#text",
+    "nodeType": 3,
+    "childNodes": {}
+  }]
+}, {
+  "textContent": "",
+  "raw": "\n    ",
+  "nodeName": "#text",
+  "nodeType": 3,
+  "childNodes": {}
 }, {
   "innerHTML": "",
   "outerHTML": "<script></script>",
   "innerText": "",
+  "textContent": "",
+  "raw": "",
   "nodeName": "SCRIPT",
   "nodeType": 1,
+  "childNodes": {}
+}, {
   "textContent": "",
+  "raw": "\n    ",
+  "nodeName": "#text",
+  "nodeType": 3,
   "childNodes": {}
 }, {
   "innerHTML": "<p></p><br>fail<p></p>",
   "outerHTML": "<div><p></p><br>fail<p></p></div>",
   "innerText": "\nfail\n",
+  "textContent": "fail",
+  "raw": "fail",
   "nodeName": "DIV",
   "nodeType": 1,
-  "textContent": "fail",
   "childNodes": [{
     "innerHTML": "",
     "outerHTML": "<p></p>",
     "innerText": "",
+    "textContent": "",
+    "raw": "",
     "nodeName": "P",
     "nodeType": 1,
-    "textContent": "",
     "childNodes": {}
   }, {
     "innerHTML": "",
     "outerHTML": "<br>",
     "innerText": "",
+    "textContent": "",
+    "raw": "",
     "nodeName": "BR",
     "nodeType": 1,
-    "textContent": "",
+    "childNodes": {}
+  }, {
+    "textContent": "fail",
+    "raw": "fail",
+    "nodeName": "#text",
+    "nodeType": 3,
     "childNodes": {}
   }, {
     "innerHTML": "",
     "outerHTML": "<p></p>",
     "innerText": "",
+    "textContent": "",
+    "raw": "",
     "nodeName": "P",
     "nodeType": 1,
-    "textContent": "",
     "childNodes": {}
   }]
+}, {
+  "textContent": "",
+  "raw": "\n\n  ",
+  "nodeName": "#text",
+  "nodeType": 3,
+  "childNodes": {}
+}]
+
+[{
+  "textContent": "",
+  "raw": "\n\n    ",
+  "nodeName": "#text",
+  "nodeType": 3,
+  "childNodes": {}
+}, {
+  "innerHTML": "Lorem ipsum",
+  "outerHTML": "<p>Lorem ipsum</p>",
+  "innerText": "Lorem ipsum",
+  "textContent": "Lorem ipsum",
+  "raw": "Lorem ipsum",
+  "nodeName": "P",
+  "nodeType": 1,
+  "childNodes": [{
+    "textContent": "Lorem ipsum",
+    "raw": "Lorem ipsum",
+    "nodeName": "#text",
+    "nodeType": 3,
+    "childNodes": {}
+  }]
+}, {
+  "textContent": "",
+  "raw": "\n    ",
+  "nodeName": "#text",
+  "nodeType": 3,
+  "childNodes": {}
+}, {
+  "innerHTML": "",
+  "outerHTML": "<script></script>",
+  "innerText": "",
+  "textContent": "",
+  "raw": "",
+  "nodeName": "SCRIPT",
+  "nodeType": 1,
+  "childNodes": {}
+}, {
+  "textContent": "",
+  "raw": "\n    ",
+  "nodeName": "#text",
+  "nodeType": 3,
+  "childNodes": {}
+}, {
+  "innerHTML": "<p></p><br>fail<p></p>",
+  "outerHTML": "<div><p></p><br>fail<p></p></div>",
+  "innerText": "\nfail",
+  "textContent": "fail",
+  "raw": "fail",
+  "nodeName": "DIV",
+  "nodeType": 1,
+  "childNodes": [{
+    "innerHTML": "",
+    "outerHTML": "<p></p>",
+    "innerText": "",
+    "textContent": "",
+    "raw": "",
+    "nodeName": "P",
+    "nodeType": 1,
+    "childNodes": {}
+  }, {
+    "innerHTML": "",
+    "outerHTML": "<br>",
+    "innerText": "",
+    "textContent": "",
+    "raw": "",
+    "nodeName": "BR",
+    "nodeType": 1,
+    "childNodes": {}
+  }, {
+    "textContent": "fail",
+    "raw": "fail",
+    "nodeName": "#text",
+    "nodeType": 3,
+    "childNodes": {}
+  }, {
+    "innerHTML": "",
+    "outerHTML": "<p></p>",
+    "innerText": "",
+    "textContent": "",
+    "raw": "",
+    "nodeName": "P",
+    "nodeType": 1,
+    "childNodes": {}
+  }]
+}, {
+  "textContent": "",
+  "raw": "\n\n  ",
+  "nodeName": "#text",
+  "nodeType": 3,
+  "childNodes": {}
 }]
