@@ -1,9 +1,7 @@
 'use strict'
 
-exports.parser = parser
-
 /** TESTS **/
-
+/*
 // TODO: create function that get the selected element + its childNodes
 let tokens1 = document.getElementById("test1").childNodes
 let tree1 = parser( tokens1 )
@@ -19,11 +17,13 @@ console.log(JSON.stringify(tree1, function(key, value) {
 }))
 console.log(JSON.stringify(tree2))
 console.log(JSON.stringify(tree3))
+*/
 
+module.exports = exports = parser
 
 /**
  * Parses tokens into a graph with "writable" objects
- * @param {Array|NodeList|Iterable} tokens
+ * @param {Node[]|NodeList|Iterable<Node>} tokens
  * @return {Object[]}
  */
 function parser(tokens) {
