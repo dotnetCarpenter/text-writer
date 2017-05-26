@@ -1,0 +1,33 @@
+[{
+  "innerHTML": "test AF<br><span>simple</span><br>parser",
+  "outerHTML": "<h1>test AF<br><span>simple</span><br>parser</h1>",
+  "innerText": "test AF\nsimple\nparser",
+  "nodeName": "H1",
+  "nodeType": 1,
+  "textContent": "test AFsimpleparser",
+  "childNodes": [{
+    "innerHTML": "",
+    "outerHTML": "<br>",
+    "innerText": "",
+    "nodeName": "BR",
+    "nodeType": 1,
+    "textContent": "",
+    "childNodes": {}
+  }, {
+    "innerHTML": "simple",
+    "outerHTML": "<span>simple</span>",
+    "innerText": "simple",
+    "nodeName": "SPAN",
+    "nodeType": 1,
+    "textContent": "simple",
+    "childNodes": []
+  }, {
+    "innerHTML": "",
+    "outerHTML": "<br>",
+    "innerText": "",
+    "nodeName": "BR",
+    "nodeType": 1,
+    "textContent": "",
+    "childNodes": {}
+  }]
+}]

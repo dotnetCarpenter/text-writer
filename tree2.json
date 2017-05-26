@@ -1,24 +1,39 @@
 [{
+  "innerHTML": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi reiciendis reprehenderit suscipit repellendus architecto\n      quis, veniam labore id nemo, et fuga possimus, voluptate cum, qui nam magni dolore maxime illo.",
+  "outerHTML": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi reiciendis reprehenderit suscipit repellendus architecto\n      quis, veniam labore id nemo, et fuga possimus, voluptate cum, qui nam magni dolore maxime illo.</p>",
+  "innerText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi reiciendis reprehenderit suscipit repellendus architecto quis, veniam labore id nemo, et fuga possimus, voluptate cum, qui nam magni dolore maxime illo.",
   "nodeName": "P",
   "nodeType": 1,
   "textContent": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi reiciendis reprehenderit suscipit repellendus architecto\n      quis, veniam labore id nemo, et fuga possimus, voluptate cum, qui nam magni dolore maxime illo.",
   "childNodes": []
 }, {
+  "innerHTML": "",
+  "outerHTML": "<hr>",
+  "innerText": "",
   "nodeName": "HR",
   "nodeType": 1,
   "textContent": "",
   "childNodes": {}
 }, {
+  "innerHTML": "\n      Lorem ipsum dolor sit amet, consectetur <span>adipisicing elit!</span>\n      Eligendi reiciendisreprehenderit suscipit repellendus architecto quis,\n      veniam labore id nemo, et fuga possimus, voluptate cum, qui nam magni\n      dolore maxime illo.\n    ",
+  "outerHTML": "<p>\n      Lorem ipsum dolor sit amet, consectetur <span>adipisicing elit!</span>\n      Eligendi reiciendisreprehenderit suscipit repellendus architecto quis,\n      veniam labore id nemo, et fuga possimus, voluptate cum, qui nam magni\n      dolore maxime illo.\n    </p>",
+  "innerText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit! Eligendi reiciendisreprehenderit suscipit repellendus architecto quis, veniam labore id nemo, et fuga possimus, voluptate cum, qui nam magni dolore maxime illo.",
   "nodeName": "P",
   "nodeType": 1,
   "textContent": "Lorem ipsum dolor sit amet, consectetur adipisicing elit!\n      Eligendi reiciendisreprehenderit suscipit repellendus architecto quis,\n      veniam labore id nemo, et fuga possimus, voluptate cum, qui nam magni\n      dolore maxime illo.",
   "childNodes": [{
+    "innerHTML": "adipisicing elit!",
+    "outerHTML": "<span>adipisicing elit!</span>",
+    "innerText": "adipisicing elit!",
     "nodeName": "SPAN",
     "nodeType": 1,
     "textContent": "adipisicing elit!",
     "childNodes": []
   }]
 }, {
+  "innerHTML": "",
+  "outerHTML": "<img src=\"\" alt=\"dummy image that will not load\">",
+  "innerText": "",
   "nodeName": "IMG",
   "nodeType": 1,
   "textContent": "",

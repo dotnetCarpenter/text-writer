@@ -41,6 +41,9 @@ function map(f, iterable) {
 function textFactory(node) {
   return {
     // node,
+    innerHTML: node.innerHTML,
+    outerHTML: node.outerHTML,
+    innerText: node.innerText,
     nodeName: node.nodeName,
     nodeType: node.nodeType,
     textContent: node.textContent.trim(),
