@@ -1,0 +1,26 @@
+[{
+  "nodeName": "P",
+  "nodeType": 1,
+  "textContent": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi reiciendis reprehenderit suscipit repellendus architecto\n      quis, veniam labore id nemo, et fuga possimus, voluptate cum, qui nam magni dolore maxime illo.",
+  "childNodes": []
+}, {
+  "nodeName": "HR",
+  "nodeType": 1,
+  "textContent": "",
+  "childNodes": {}
+}, {
+  "nodeName": "P",
+  "nodeType": 1,
+  "textContent": "Lorem ipsum dolor sit amet, consectetur adipisicing elit!\n      Eligendi reiciendisreprehenderit suscipit repellendus architecto quis,\n      veniam labore id nemo, et fuga possimus, voluptate cum, qui nam magni\n      dolore maxime illo.",
+  "childNodes": [{
+    "nodeName": "SPAN",
+    "nodeType": 1,
+    "textContent": "adipisicing elit!",
+    "childNodes": []
+  }]
+}, {
+  "nodeName": "IMG",
+  "nodeType": 1,
+  "textContent": "",
+  "childNodes": {}
+}]
