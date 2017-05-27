@@ -7,10 +7,8 @@ main()
 
 function main() {
   // TODO: create function that get the selected element + its childNodes
-  let entry = document.querySelector('.entry')
-
-  document.addEventListener("click", bind(writeStatus, entry, 'Document <i>is</i> clicked'), false)
-  // setTimeout(bind(writeStatus, entry, 'Hello <span>World</span>'), 1000)
+  let entry = document.querySelector('#test2')
+  document.addEventListener("click", bind(writeStatus, entry, '<strong>This</strong> is freaking <i>AWESOME!</i>'), false)
 
   function bind(f /*,args*/) {
     var args = [].slice.call(arguments)
@@ -45,6 +43,8 @@ function main() {
 // console.log(json2)
 // console.log(json3)
 //
+// let entry = document.querySelector('.entry')
+// document.addEventListener("click", bind(writeStatus, entry, 'Document <i>is</i> clicked'), false)
 // setTimeout(bind(eraseText, entry.querySelector('.entry__status'), 60), 500)
 // setTimeout(bind(writeStatus, entry, 'Hello <span>World</span>'), 1000)
 
