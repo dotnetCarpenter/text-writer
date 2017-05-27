@@ -1,23 +1,24 @@
 'use strict'
 
 /* TESTS */
-/*
+
 // TODO: create function that get the selected element + its childNodes
 let tokens1 = document.getElementById("test1").childNodes
 let tree1 = parser( tokens1 )
 
-let tokens2 = document.getElementById("test2").childNodes
-let tree2 = parser( tokens2 )
+// let tokens2 = document.getElementById("test2").childNodes
+// let tree2 = parser( tokens2 )
 
-let tokens3 = document.getElementById("test3").childNodes
-let tree3 = parser( tokens3 )
+// let tokens3 = document.getElementById("test3").childNodes
+// let tree3 = parser( tokens3 )
 
+console.log(JSON.stringify(tree1))
 console.log(JSON.stringify(tree1, function(key, value) {
   return value
 }))
-console.log(JSON.stringify(tree2))
-console.log(JSON.stringify(tree3))
-*/
+// console.log(JSON.stringify(tree2))
+// console.log(JSON.stringify(tree3))
+
 
 
 
@@ -64,7 +65,7 @@ function map(f, iterable) {
  */
 function textFactory(node) {
   return {
-    node,
+    // node,
     nodeName: node.nodeName,
     nodeType: node.nodeType,
     childNodes: node.childNodes,
