@@ -12,14 +12,7 @@
     "nodeType": 1,
     "childNodes": {},
     "textContent": "",
-    "textLength": 0,
-    "previousSibling": {
-      "nodeName": "#text",
-      "nodeType": 3,
-      "childNodes": {},
-      "textContent": "test AF",
-      "textLength": 7
-    }
+    "textLength": 0
   }, {
     "nodeName": "PRE",
     "nodeType": 1,
@@ -31,94 +24,19 @@
       "textLength": 17
     }],
     "textContent": " s  i  m  p  l  e",
-    "textLength": 17,
-    "previousSibling": {
-      "nodeName": "BR",
-      "nodeType": 1,
-      "childNodes": {},
-      "textContent": "",
-      "textLength": 0,
-      "previousSibling": {
-        "nodeName": "#text",
-        "nodeType": 3,
-        "childNodes": {},
-        "textContent": "test AF",
-        "textLength": 7
-      }
-    }
+    "textLength": 17
   }, {
     "nodeName": "BR",
     "nodeType": 1,
     "childNodes": {},
     "textContent": "",
-    "textLength": 0,
-    "previousSibling": {
-      "nodeName": "PRE",
-      "nodeType": 1,
-      "childNodes": [{
-        "nodeName": "#text",
-        "nodeType": 3,
-        "childNodes": {},
-        "textContent": " s  i  m  p  l  e",
-        "textLength": 17
-      }],
-      "textContent": " s  i  m  p  l  e",
-      "textLength": 17,
-      "previousSibling": {
-        "nodeName": "BR",
-        "nodeType": 1,
-        "childNodes": {},
-        "textContent": "",
-        "textLength": 0,
-        "previousSibling": {
-          "nodeName": "#text",
-          "nodeType": 3,
-          "childNodes": {},
-          "textContent": "test AF",
-          "textLength": 7
-        }
-      }
-    }
+    "textLength": 0
   }, {
     "nodeName": "#text",
     "nodeType": 3,
     "childNodes": {},
     "textContent": "parser",
-    "textLength": 6,
-    "previousSibling": {
-      "nodeName": "BR",
-      "nodeType": 1,
-      "childNodes": {},
-      "textContent": "",
-      "textLength": 0,
-      "previousSibling": {
-        "nodeName": "PRE",
-        "nodeType": 1,
-        "childNodes": [{
-          "nodeName": "#text",
-          "nodeType": 3,
-          "childNodes": {},
-          "textContent": " s  i  m  p  l  e",
-          "textLength": 17
-        }],
-        "textContent": " s  i  m  p  l  e",
-        "textLength": 17,
-        "previousSibling": {
-          "nodeName": "BR",
-          "nodeType": 1,
-          "childNodes": {},
-          "textContent": "",
-          "textLength": 0,
-          "previousSibling": {
-            "nodeName": "#text",
-            "nodeType": 3,
-            "childNodes": {},
-            "textContent": "test AF",
-            "textLength": 7
-          }
-        }
-      }
-    }
+    "textLength": 6
   }],
   "textContent": "test AF s  i  m  p  l  eparser",
   "textLength": 30

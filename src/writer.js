@@ -45,41 +45,62 @@ function eraseText(el, speed, cb) {
 }
 
 function writeText(el, html, speed, cb) {
-  el = el.cloneNode(false)
-  el.innerHTML = html
-  let text = writer( parser(el.childNodes) )
-  let n = 0, max = el.textContent.length // text.textLength
+  let clone = el.cloneNode(false)
+  clone.innerHTML = html
+  let text = writer( parser(clone.childNodes) )
+  let n = 0, max = clone.textContent.length // text.textLength
   let timer = setInterval(() => {
-    el.textContent += text[n]
+    text.add(el, 1)
     n++
     if(n === max) {
       clearInterval(timer)
-      el.dataset.writing = 0
+      // el.dataset.writing = 0
       cb && cb()
     }
   }, speed)
 }
 
 function writer(writables) {
-  let current = last(writables)
+  let eraseCurrent = last(writables)
+  let writeCurrent = first(writables)
+  let current = 0//, end = writables.textLength
+  let placeholder
   return {
     get textLength() { // Maybe you could just call textContent.length on the root node you pass to the parser
       return map(x => x.textLength, writables)
         .reduce((a,b) => a + b)
     },
+    add(el, n) {
+      if(!placeholder) placeholder = el
+      if(writeCurrent.textLength === current) {
+        writeCurrent = writeCurrent.nextSibling
+
+        placeholder = document.createElement(writeCurrent.nodeName)
+        el.appendChild(placeholder)
+
+        current = 0
+      }
+
+      placeholder.textContent += writeCurrent.textContent[current]
+      current += n
+    },
     remove(n) {
-      if(!current) return
-      if(current.textLength === 0) {
-        current = current.previousSibling
+      if(!eraseCurrent) return
+      if(eraseCurrent.textLength === 0) {
+        eraseCurrent = eraseCurrent.previousSibling
         this.remove(n)
         return
       }
 
-      current.textContent = current.textContent.slice(0, -n)
+      eraseCurrent.textContent = eraseCurrent.textContent.slice(0, -n)
     }
   }
 }
 
 function last(indexed) {
   return indexed[indexed.length - 1]
+}
+
+function first(indexed) {
+  return indexed[0]
 }

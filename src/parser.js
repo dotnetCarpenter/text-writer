@@ -13,12 +13,13 @@ let tree1 = parser( tokens1 )
 
 // let tokens3 = document.getElementById("test3").childNodes
 // let tree3 = parser( tokens3 )
-
-console.log(JSON.stringify(tree1))
+let blacklist = ['nextSibling', 'previousSibling']
+console.log(
+  JSON.stringify(tree1, (key, value) => blacklist.indexOf(key) === -1 ? value : undefined
+  )
+)
 // console.log(JSON.stringify(tree2))
 // console.log(JSON.stringify(tree3))
-
-
 
 
 module.exports = exports = parser
@@ -53,10 +54,8 @@ function textFactory(node) {
     get textLength() {
       return node.textContent.length
     },
-    // nextSibling: null,
-    previousSibling: null
-    // writeText,
-    // removeText,
+    previousSibling: null,
+    nextSibling: null
   }
 }
 
@@ -71,6 +70,9 @@ function treeBuilder(tree, text) {
       text.textContent.trim() === '' || tree.push(text)
       break
   }
+
   text.previousSibling = tree[tree.length - 2]
+  if(text.previousSibling) text.previousSibling.nextSibling = text
+
   return tree
 }
