@@ -6,6 +6,7 @@ const map = require('./util').map
 main()
 
 function main() {
+  // TODO: create function that get the selected element + its childNodes
   let entry = document.querySelector('.entry')
 
   document.addEventListener("click", bind(writeStatus, entry, 'Document is clicked'), false)
