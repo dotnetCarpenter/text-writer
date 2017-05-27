@@ -13,9 +13,6 @@ let tree1 = parser( tokens1 )
 // let tree3 = parser( tokens3 )
 
 console.log(JSON.stringify(tree1))
-console.log(JSON.stringify(tree1, function(key, value) {
-  return value
-}))
 // console.log(JSON.stringify(tree2))
 // console.log(JSON.stringify(tree3))
 
@@ -30,28 +27,8 @@ module.exports = exports = parser
  * @return {Writer}
  */
 function parser(tokens) {
-  return writer( map(textFactory, tokens)
-    .reduce(treeBuilder, []) )
-}
-
-function writer(writables) {
-  let current = last(writables)
-  return {
-    get textLength() { // Maybe you could just call textContent.length on the root node you pass to the parser
-      return map(x => x.textLength, writables)
-        .reduce((a,b) => a + b)
-    },
-    remove(n) {
-      if(!current) return
-      if(current.textLength === 0) {
-        current = current.previousSibling
-        this.remove(n)
-        return
-      }
-
-      current.textContent = current.textContent.slice(0, -n)
-    }
-  }
+  return map(textFactory, tokens)
+    .reduce(treeBuilder, [])
 }
 
 function map(f, iterable) {
@@ -90,8 +67,7 @@ function treeBuilder(tree, text) {
     case Node.ELEMENT_NODE:
       tree.push(text)
       if(text.childNodes.length)
-        text.childNodes = map(textFactory, text.childNodes)
-                            .reduce(treeBuilder, [])
+        text.childNodes = parser(text.childNodes)
       break
     case Node.TEXT_NODE: // TODO: don't ignore empty nodes anyway, they're important for <pre> etc. and I can simplify or remove treeBuilder
       text.textContent.trim() === '' || tree.push(text)
@@ -99,8 +75,4 @@ function treeBuilder(tree, text) {
   }
   text.previousSibling = tree[tree.length - 2]
   return tree
-}
-
-function last(indexed) {
-  return indexed[indexed.length - 1]
 }

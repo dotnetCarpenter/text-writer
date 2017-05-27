@@ -24,7 +24,7 @@ function writeStatus(entry, msg) {
 }
 
 function eraseText(el, speed, cb) {
-  let text = parser(el.childNodes)
+  let text = writer( parser(el.childNodes) )
   // let textLength = text.textLength
   let n = el.textContent.length
   let timer = setInterval(() => {
@@ -37,6 +37,30 @@ function eraseText(el, speed, cb) {
       cb && cb()
     }
   }, speed)
+}
+
+function writer(writables) {
+  let current = last(writables)
+  return {
+    get textLength() { // Maybe you could just call textContent.length on the root node you pass to the parser
+      return map(x => x.textLength, writables)
+        .reduce((a,b) => a + b)
+    },
+    remove(n) {
+      if(!current) return
+      if(current.textLength === 0) {
+        current = current.previousSibling
+        this.remove(n)
+        return
+      }
+
+      current.textContent = current.textContent.slice(0, -n)
+    }
+  }
+}
+
+function last(indexed) {
+  return indexed[indexed.length - 1]
 }
 
 function writeText(el, string, speed, cb) {
