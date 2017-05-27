@@ -1,4 +1,4 @@
-text-writer
+text-writer - **alpha**
 ===========
 
 ## distribution ##

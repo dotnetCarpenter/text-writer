@@ -2,26 +2,18 @@
 
 const map = require('./util').map
 
-/* TESTS */
-
-let tokens1 = document.getElementById("test1").childNodes
-let tree1 = parser( tokens1 )
-let blacklist = ['nextSibling', 'previousSibling']
-console.log(
-  JSON.stringify(tree1, (key, value) => blacklist.indexOf(key) === -1 ? value : undefined
-  )
-)
-
-// let tokens2 = document.getElementById("test2").childNodes
-// let tree2 = parser( tokens2 )
-
-// let tokens3 = document.getElementById("test3").childNodes
-// let tree3 = parser( tokens3 )
-// console.log(JSON.stringify(tree2))
-// console.log(JSON.stringify(tree3))
-
-
+// export
+parser.serialize = serialize
 module.exports = exports = parser
+
+function serialize(tokens) {
+  return JSON.stringify(tokens, replacer)
+}
+
+function replacer(key, value) {
+  let blacklist = ['nextSibling', 'previousSibling']
+  return blacklist.indexOf(key) === -1 ? value : undefined
+}
 
 /**
  * Parses tokens into a graph with "writable" objects

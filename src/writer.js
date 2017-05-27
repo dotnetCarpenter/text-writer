@@ -9,9 +9,8 @@ function main() {
   // TODO: create function that get the selected element + its childNodes
   let entry = document.querySelector('.entry')
 
-  document.addEventListener("click", bind(writeStatus, entry, 'Document is clicked'), false)
-  setTimeout(bind(writeStatus, entry, 'Hello <span>World</span>'), 1000)
-  // setTimeout(bind(eraseText, entry.querySelector('.entry__status'), 60), 500)
+  document.addEventListener("click", bind(writeStatus, entry, 'Document <i>is</i> clicked'), false)
+  // setTimeout(bind(writeStatus, entry, 'Hello <span>World</span>'), 1000)
 
   function bind(f /*,args*/) {
     var args = [].slice.call(arguments)
@@ -19,15 +18,37 @@ function main() {
   }
 
   function writeStatus(entry, msg) {
-    let entryStatus = entry.querySelectorAll(".entry__status")
+    let entryStatus = [].slice.call(entry.children)
     entryStatus.forEach(function(status) {
-      eraseText(status, 40, function(){
-        status.classList.add('entry__status_active')
+      eraseText(status, 40, function() {
         writeText(status, msg, 60)
       })
     })
   }
 }
+
+
+/* TESTS */
+// let tokens1 = document.getElementById("test1").childNodes
+// let tree1 = parser( tokens1 )
+
+// let tokens2 = document.getElementById("test2").childNodes
+// let tree2 = parser( tokens2 )
+
+// let tokens3 = document.getElementById("test3").childNodes
+// let tree3 = parser( tokens3 )
+
+// let json1 = parser.serialize(tree1)
+// let json2 = parser.serialize(tree2)
+// let json3 = parser.serialize(tree3)
+// console.log(json1)
+// console.log(json2)
+// console.log(json3)
+//
+// setTimeout(bind(eraseText, entry.querySelector('.entry__status'), 60), 500)
+// setTimeout(bind(writeStatus, entry, 'Hello <span>World</span>'), 1000)
+
+
 
 function eraseText(el, speed, cb) {
   let text = writer( parser(el.childNodes) )
@@ -64,7 +85,7 @@ function writeText(el, html, speed, cb) {
 function writer(writables) {
   let eraseCurrent = last(writables)
   let writeCurrent = first(writables)
-  let current = 0//, end = writables.textLength
+  let cursor = 0//, end = writables.textLength
   let placeholder
   return {
     get textLength() { // Maybe you could just call textContent.length on the root node you pass to the parser
@@ -73,23 +94,29 @@ function writer(writables) {
     },
     add(el, n) {
       if(!placeholder) placeholder = el
-      if(writeCurrent.textLength === current) {
+      if(writeCurrent.textLength === cursor) {
         writeCurrent = writeCurrent.nextSibling
 
-        placeholder = document.createElement(writeCurrent.nodeName)
-        el.appendChild(placeholder)
+        if(writeCurrent.textLength === 0) {
+          this.add(el, n) // skip element
+        } else if(writeCurrent.nodeType === Node.ELEMENT_NODE) {
+          placeholder = document.createElement(writeCurrent.nodeName)
+        } else if(writeCurrent.nodeType === Node.TEXT_NODE) {
+          placeholder = document.createTextNode('')
+        }
 
-        current = 0
+        el.appendChild(placeholder)
+        cursor = 0
       }
 
-      placeholder.textContent += writeCurrent.textContent[current]
-      current += n
+      placeholder.textContent += writeCurrent.textContent[cursor]
+      cursor += n
     },
     remove(n) {
       if(!eraseCurrent) return
       if(eraseCurrent.textLength === 0) {
         eraseCurrent = eraseCurrent.previousSibling
-        this.remove(n)
+        this.remove(n) // skip element
         return
       }
 
