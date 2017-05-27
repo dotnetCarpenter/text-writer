@@ -1,9 +1,19 @@
 text-writer
 ===========
 
+## distribution ##
+
+`dist/`:
+
+- `writer.js`
+- `writer.js.map`
+- `writer.min.js`
+- `writer.min.js.map`
+
+
 ## dev commands ##
 
-- `make` or `npm run build` - build lib/writer.js from source files
+- `make` or `npm run build` - build dist/ files from source files
 - `npm run dev` - run `make` every 2 seconds
 
 The main difference between `make` or `npm run build` is that the latter will
