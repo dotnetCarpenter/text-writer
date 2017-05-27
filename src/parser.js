@@ -1,6 +1,6 @@
 'use strict'
 
-/** TESTS **/
+/* TESTS */
 /*
 // TODO: create function that get the selected element + its childNodes
 let tokens1 = document.getElementById("test1").childNodes
@@ -19,16 +19,38 @@ console.log(JSON.stringify(tree2))
 console.log(JSON.stringify(tree3))
 */
 
+
+
 module.exports = exports = parser
 
 /**
  * Parses tokens into a graph with "writable" objects
  * @param {Node[]|NodeList|Iterable<Node>} tokens
- * @return {Object[]}
+ * @return {Writer}
  */
 function parser(tokens) {
-  return map(textFactory, tokens)
-    .reduce(treeBuilder, [])
+  return writer( map(textFactory, tokens)
+    .reduce(treeBuilder, []) )
+}
+
+function writer(writables) {
+  let current = last(writables)
+  return {
+    get textLength() { // Maybe you could just call textContent.length on the root node you pass to the parser
+      return map(x => x.textLength, writables)
+        .reduce((a,b) => a + b)
+    },
+    remove(n) {
+      if(!current) return
+      if(current.textLength === 0) {
+        current = current.previousSibling
+        this.remove(n)
+        return
+      }
+
+      current.textContent = current.textContent.slice(0, -n)
+    }
+  }
 }
 
 function map(f, iterable) {
@@ -42,46 +64,39 @@ function map(f, iterable) {
  */
 function textFactory(node) {
   return {
-    // node,
-    textContent: node.textContent.trim(),
-    raw: node.textContent,
+    node,
     nodeName: node.nodeName,
     nodeType: node.nodeType,
     childNodes: node.childNodes,
+    get textContent() {
+      return node.textContent
+    },
+    set textContent(value) {
+      node.textContent = value
+    },
+    get textLength() {
+      return node.textContent.length
+    },
     // nextSibling: null,
-    // previousSibling: null,
-    writeText,
-    removeText,
+    previousSibling: null,
+    // writeText,
+    // removeText,
   }
 }
 
-function writeText() {}
-function removeText(el, speed, cb) {
-  let n = el.textContent.length
-  let timer = setInterval(() => {
-    el.textContent = el.textContent.slice(0, -1)
-    n--
-    if(n === 0) {
-      clearInterval(timer)
-      el.dataset.writing = 0
-      cb && cb()
-    }
-  }, speed)
-}
-
 function treeBuilder(tree, text) {
-  // switch(text.nodeType) {
-  //   case Node.ELEMENT_NODE:
+  switch(text.nodeType) {
+    case Node.ELEMENT_NODE:
       tree.push(text)
-      // text.previousSibling = last(tree)
       if(text.childNodes.length)
         text.childNodes = map(textFactory, text.childNodes)
                             .reduce(treeBuilder, [])
-  //     break
-  //   case Node.TEXT_NODE: // TODO: don't ignore empty nodes anyway, they're important for <pre> etc. and I can simplify or remove treeBuilder
-  //     // text.textContent.trim() === '' || tree.push(text)
-  //     break
-  // }
+      break
+    case Node.TEXT_NODE: // TODO: don't ignore empty nodes anyway, they're important for <pre> etc. and I can simplify or remove treeBuilder
+      text.textContent.trim() === '' || tree.push(text)
+      break
+  }
+  text.previousSibling = tree[tree.length - 2]
   return tree
 }
 

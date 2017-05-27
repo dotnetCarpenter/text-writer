@@ -24,14 +24,16 @@ function writeStatus(entry, msg) {
 }
 
 function eraseText(el, speed, cb) {
-  let n = el.textContent.length
   let text = parser(el.childNodes)
+  // let textLength = text.textLength
+  let n = el.textContent.length
   let timer = setInterval(() => {
-    el.textContent = el.textContent.slice(0, -1)
+    text.remove(1)
+    //el.textContent = el.textContent.slice(0, -1)
     n--
     if(n === 0) {
       clearInterval(timer)
-      el.dataset.writing = 0
+      // el.dataset.writing = 0
       cb && cb()
     }
   }, speed)
