@@ -13,5 +13,6 @@ h1 {
 }
 
 span {
+  color: hsl(340, 90%, 50%);
   font-style: italic;
 }

@@ -1,20 +1,22 @@
 {
   "name": "text-writer",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha1",
   "description": "",
   "main": "lib/parser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify --entry src/writer.js --outfile lib/writer.js",
+    "build": "browserify --debug --entry src/writer.js | exorcist dist/writer.js.map > dist/writer.js --base dist && uglifyjs --mangle --compress --source-map content=dist/writer.js.map,url=writer.min.js.map --output dist/writer.min.js -- dist/writer.js",
     "dev": "watch make -j 2",
     "browserify": "browserify",
-    "exorcist": "exorcist"
+    "exorcist": "exorcist",
+    "uglifyjs": "uglifyjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "browserify": "^14.3.0",
-    "exorcist": "^0.4.0"
+    "exorcist": "^0.4.0",
+    "uglify-es": "^3.0.11"
   }
 }

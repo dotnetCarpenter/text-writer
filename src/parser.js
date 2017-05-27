@@ -1,5 +1,7 @@
 'use strict'
 
+const map = require('./util').map
+
 /* TESTS */
 
 // TODO: create function that get the selected element + its childNodes
@@ -31,10 +33,6 @@ function parser(tokens) {
     .reduce(treeBuilder, [])
 }
 
-function map(f, iterable) {
-  return Array.prototype.map.call(iterable, x => f(x))
-}
-
 /**
  * Creates "writable" text objects
  * @param {Node} node
@@ -56,7 +54,7 @@ function textFactory(node) {
       return node.textContent.length
     },
     // nextSibling: null,
-    previousSibling: null,
+    previousSibling: null
     // writeText,
     // removeText,
   }
@@ -69,7 +67,7 @@ function treeBuilder(tree, text) {
       if(text.childNodes.length)
         text.childNodes = parser(text.childNodes)
       break
-    case Node.TEXT_NODE: // TODO: don't ignore empty nodes anyway, they're important for <pre> etc. and I can simplify or remove treeBuilder
+    case Node.TEXT_NODE:
       text.textContent.trim() === '' || tree.push(text)
       break
   }

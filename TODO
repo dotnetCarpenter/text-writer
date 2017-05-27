@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+find . -not \( -path ./README.md -prune \) -not \( -path ./dist -prune \) -not \( -path ./node_modules -prune \) -not \( -path ./.git -prune \) -not \( -path "$0" -prune \) -type f -exec grep -nH 'TODO' {} \;

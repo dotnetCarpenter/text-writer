@@ -1,26 +1,31 @@
 'use strict'
 
 const parser = require('./parser')
+const map = require('./util').map
 
-let entry = document.querySelector('.entry')
+main()
 
-document.addEventListener("click", bind(writeStatus, entry, 'Document is clicked'), false);
-//setTimeout(bind(writeStatus, entry, 'Hello World'), 1000)
-setTimeout(bind(eraseText, entry.querySelector('.entry__status'), 60), 500)
+function main() {
+  let entry = document.querySelector('.entry')
 
-function bind(f, /*args*/) {
-  var args = [].slice.call(arguments)
-  return f.bind.apply(f, args)
-}
+  document.addEventListener("click", bind(writeStatus, entry, 'Document is clicked'), false)
+  setTimeout(bind(writeStatus, entry, 'Hello <span>World</span>'), 1000)
+  // setTimeout(bind(eraseText, entry.querySelector('.entry__status'), 60), 500)
 
-function writeStatus(entry, msg) {
-  let entryStatus = entry.querySelectorAll(".entry__status")
-  entryStatus.forEach(function(status) {
-    eraseText(status, 40, function(){
-      status.classList.add('entry__status_active')
-      writeText(status, msg, 60)
+  function bind(f /*,args*/) {
+    var args = [].slice.call(arguments)
+    return f.bind.apply(f, args)
+  }
+
+  function writeStatus(entry, msg) {
+    let entryStatus = entry.querySelectorAll(".entry__status")
+    entryStatus.forEach(function(status) {
+      eraseText(status, 40, function(){
+        status.classList.add('entry__status_active')
+        writeText(status, msg, 60)
+      })
     })
-  })
+  }
 }
 
 function eraseText(el, speed, cb) {
@@ -34,6 +39,22 @@ function eraseText(el, speed, cb) {
     if(n === 0) {
       clearInterval(timer)
       // el.dataset.writing = 0
+      cb && cb()
+    }
+  }, speed)
+}
+
+function writeText(el, html, speed, cb) {
+  el = el.cloneNode(false)
+  el.innerHTML = html
+  let text = writer( parser(el.childNodes) )
+  let n = 0, max = el.textContent.length // text.textLength
+  let timer = setInterval(() => {
+    el.textContent += text[n]
+    n++
+    if(n === max) {
+      clearInterval(timer)
+      el.dataset.writing = 0
       cb && cb()
     }
   }, speed)
@@ -61,18 +82,4 @@ function writer(writables) {
 
 function last(indexed) {
   return indexed[indexed.length - 1]
-}
-
-function writeText(el, string, speed, cb) {
-  let chars = [].slice.call(string)
-  let n = 0, max = chars.length
-  let timer = setInterval(() => {
-    el.textContent += chars[n]
-    n++
-    if(n === max) {
-      clearInterval(timer)
-      el.dataset.writing = 0
-      cb && cb()
-    }
-  }, speed)
 }
