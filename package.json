@@ -12,7 +12,11 @@
     "uglifyjs": "uglifyjs"
   },
   "keywords": [],
-  "author": "",
+  "author": "dotnetCarpenter <jon.ronnenberg+text-writer@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dotnetCarpenter/text-writer.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "browserify": "^14.3.0",
