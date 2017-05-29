@@ -2,6 +2,13 @@
 
 const map = require('./util').map
 
+if(!Node) {
+  const Node = {
+    ELEMENT_NODE: 1,
+    TEXT_NODE: 3
+  }
+}
+
 // export
 parser.serialize = serialize
 module.exports = exports = parser
@@ -52,12 +59,12 @@ function textFactory(node) {
 
 function treeBuilder(tree, text) {
   switch(text.nodeType) {
-    case window.Node.ELEMENT_NODE:
+    case Node.ELEMENT_NODE:
       tree.push(text)
       if(text.childNodes.length)
         text.childNodes = parser(text.childNodes)
       break
-    case window.Node.TEXT_NODE:
+    case Node.TEXT_NODE:
       text.textContent.trim() === '' || tree.push(text)
       break
   }
