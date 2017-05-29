@@ -2,8 +2,8 @@
 
 const map = require('./util').map
 
-if(!Node) {
-  const Node = {
+if(typeof Node === 'undefined') {
+  var Node = {
     ELEMENT_NODE: 1,
     TEXT_NODE: 3
   }
