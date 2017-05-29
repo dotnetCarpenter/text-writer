@@ -53,12 +53,12 @@ function textFactory(node) {
 
 function treeBuilder(tree, text) {
   switch(text.nodeType) {
-    case Node.ELEMENT_NODE:
+    case window.Node.ELEMENT_NODE:
       tree.push(text)
       if(text.childNodes.length)
         text.childNodes = parser(text.childNodes)
       break
-    case Node.TEXT_NODE:
+    case window.Node.TEXT_NODE:
       text.textContent.trim() === '' || tree.push(text)
       break
   }
