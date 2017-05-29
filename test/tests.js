@@ -2,7 +2,9 @@
 
 import { JSDOM } from 'jsdom'
 import fs from 'fs'
+import path from 'path'
 import test from 'ava'
+
 import parser from '../src/parser'
 
 function getHtml(path) {
@@ -15,7 +17,10 @@ function getHtml(path) {
 }
 
 test('parser can parse flat html', async t => {
-  let actual = parser( getHtml('fixture/flat.html').childNodes )
+  const dom = await getHtml(path.join(__dirname, 'fixture/flat.html'))
+  const tokens = dom.window.document.querySelector('#test1').childNodes
+  let actual = parser( tokens )
   let expected
   console.log(actual)
 });
+
