@@ -7,13 +7,16 @@ import test from 'ava'
 
 import parser from '../src/parser'
 
-function getHtml(path) {
+function readFile(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, (err, data) => {
       if(err) reject(err)
-      resolve( new JSDOM(data) )
+      resolve( data )
     })
   })
+}
+async function getHtml(path) {
+  return new JSDOM( await readFile(path) )
 }
 
 test('parser can parse flat html', async t => {
@@ -24,9 +27,12 @@ test('parser can parse flat html', async t => {
   // let expected = {"nodeName":"H1","nodeType":1,"childNodes":[{"nodeName":"#text","nodeType":3,"childNodes":{},"textContent":"test AF","textLength":7},{"nodeName":"BR","nodeType":1,"childNodes":{},"textContent":"","textLength":0},{"nodeName":"PRE","nodeType":1,"childNodes":[{"nodeName":"#text","nodeType":3,"childNodes":{},"textContent":" s  i  m  p  l  e","textLength":17}],"textContent":" s  i  m  p  l  e","textLength":17},{"nodeName":"BR","nodeType":1,"childNodes":{},"textContent":"","textLength":0},{"nodeName":"#text","nodeType":3,"childNodes":{},"textContent":"parser","textLength":6}],"textContent":"test AF s  i  m  p  l  eparser","textLength":30}
   // console.log(actual)
 
-  t.is(actual.nodeName,             'H1', 'nodeName must be H1');
-  t.is(actual.nodeType,                1, 'nodeType must be 1');
-  t.is(actual.previousSibling, undefined, 'previousSibling must be undefined');
-  t.is(actual.nextSibling,     undefined, 'nextSibling must be undefined');
+  t.is(actual.nodeName,        'H1', 'nodeName must be H1')
+  t.is(actual.nodeType,           1, 'nodeType must be 1')
+  t.is(actual.nextSibling,     null, 'nextSibling must be null')
+  t.is(actual.previousSibling, null, 'previousSibling must be null')
+
+  // serialized
+  // t.deepEqual()
 });
 

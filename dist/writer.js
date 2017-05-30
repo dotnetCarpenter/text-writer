@@ -53,8 +53,8 @@ function textFactory(node) {
     get textLength() {
       return node.textContent.length
     },
-    previousSibling: undefined,
-    nextSibling: undefined
+    previousSibling: null,
+    nextSibling: null
   }
 }
 
@@ -70,7 +70,7 @@ function treeBuilder(tree, text) {
       break
   }
 
-  text.previousSibling = tree[tree.length - 2]
+  text.previousSibling = tree[tree.length - 2] || null
   if(text.previousSibling) text.previousSibling.nextSibling = text
 
   return tree
