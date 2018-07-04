@@ -31,8 +31,15 @@ test('parser can parse flat html', async t => {
   t.is(actual.nodeType,           1, 'nodeType must be 1')
   t.is(actual.nextSibling,     null, 'nextSibling must be null')
   t.is(actual.previousSibling, null, 'previousSibling must be null')
-
-  // serialized
-  // t.deepEqual()
 });
+
+test('and can serialize the flat html', async t => {
+  const dom = await getHtml(path.join(__dirname, 'fixture/flat.html'))
+  const tokens = dom.window.document.querySelector('#test1').childNodes
+  let parsed = parser( tokens )[0]
+  let expected = await readFile(path.join(__dirname, 'fixture/tree1.json'))
+  let actual = parsed.serialize()
+  t.deepEqual(actual, expected)
+
+})
 

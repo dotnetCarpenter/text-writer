@@ -3,6 +3,7 @@ text-writer - **alpha**
 
 [![Build Status](https://travis-ci.org/dotnetCarpenter/text-writer.svg?branch=master)](https://travis-ci.org/dotnetCarpenter/text-writer)
 
+
 ## distribution ##
 
 `dist/`:
